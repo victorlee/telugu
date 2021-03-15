@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Telugu typer</title>
+<meta charset="utf-8">
+
+    <script type="text/javascript">
+	  
+var conversion = {
+"k": "క",
+"c": "చ",
+"T": "ట",
+"t": "త",
+"p": "ప",
+"kh": "ఖ",
+"ch": "ఛ",
+"Th": "ఠ",
+"th": "థ",
+"ph": "ఫ",
+"g": "గ",
+"j": "జ",
+"D": "డ",
+"d": "ద",
+"b": "బ",
+"gh": "ఘ",
+"jh": "ఝ",
+"Dh": "ఢ",
+"dh": "ధ",
+"bh": "భ",
+"ng": "ఙ",
+"ny": "ఞ",
+"N": "ణ",
+"n": "న",
+"m": "మ",
+"h": "హ",
+"y": "ప",
+"r": "ర",
+"l": "ల",
+"v": "వ",
+"sh": "శ",
+"S": "ష",
+"s": "స",
+
+"M": "ం",
+"H": "ః",
+"C": "ఁ",
+"q": "్",
+"a": "&#8203;",
+"aa": "ా",
+"i": "ి",
+"ii": "ీ",
+"u": "ు",
+"uu": "ూ",
+"R": "ృ",
+"RR": "ౄ",
+"L": "ౢ",
+"LL": "ౣ",
+"e": "ె",
+"ee":"ే",
+"ai": "ై",
+"o": "ొ",
+"oo":"ో",
+"au": "ౌ",
+"qa": "అ",
+"qaa": "ఆ",
+"qi": "ఇ",
+"qii": "ఈ",
+"qu": "ఉ",
+"quu": "ఊ",
+"qR": "ఋ",
+"qRR": "ౠ",
+"qL": "ఌ",
+"qLL": "ౡ",
+"qe": "ఎ",
+"qee":"ఏ",
+"qai": "ఐ",
+"qo": "ఒ",
+"qoo":"ఓ",
+"qau": "ఔ",
+
+
+
+"0":"౦",
+"1":"౧",
+"2":"౨",
+"3":"౩",
+"4":"౪",
+"5":"౫",
+"6":"౬",
+"7":"౭",
+"8":"౮",
+"9":"౯",
+
+
+"kah":"కహ",
+"cah":"చహ",
+"Tah":"టహ",
+"tah":"తహ",
+"pah":"పహ",
+"gah":"గహ",
+"jah":"జహ",
+"Dah":"డహ",
+"dah":"దహ",
+"bah":"బహ",
+"nag":"నగ",
+"nay":"నప",
+"sah":"సహ",
+        };
+
+ var maxLength = Object.keys(conversion)
+    .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
+    .length; // and it's length
+  
+  function convert (text) {
+    var converted = "";
+    var cur = 0;
+    while (cur < text.length) {
+      var testedPhoneme;
+      var symbol = undefined;
+      for (var length = maxLength; length > 0; length --) {
+        testedPhoneme = text.substr(cur, length);
+        if (conversion[testedPhoneme]) {
+          symbol = conversion[testedPhoneme];
+          break; // stop the loop
+        }
+      }
+      if (symbol) {
+        converted += symbol;
+        cur += testedPhoneme.length;
+      }
+      else {
+        converted += text[cur]
+        cur++;
+      }
+    }
+    return converted
+  }
+
+  function onInputTextChange(txt) {
+    var outputTextareaElem = document.getElementById("output_textarea");
+    var div = document.createElement("div");
+    var outputHtmlEntities = convert(txt);
+    div.innerHTML = outputHtmlEntities;
+    outputTextareaElem.value = div.innerText;
+  }
+
+
+        function select() {
+          const input = document.getElementById('input_textarea');
+          input.focus();
+          input.select();
+        }   
+        function copytext() {
+          var copyText = document.getElementById("output_textarea");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+        }
+
+    </script>
+    
+<style>
+html {
+font-family:arial
+}
+table {
+  border-collapse: collapse;
+  width: 90%;
+}
+td, th {
+  border: 1px solid #AAA;
+  text-align: center;
+  padding: 1px;
+}
+textarea {
+	font-size: 16pt;
+	font-family: Arial;
+    width: 96%;
+} 
+.note {
+  border: 1px solid #DDD;
+  width: 30%;
+  text-align: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+</style>
+
+
+</head>
+<body>  
+
+<body>  
+
+<center><h1 class="text-center">Telugu typer</h1></center><br>
+ 
+<center>
+<table>
+<thead>
+<tr>
+<th>	
+<button onclick="select('input_textarea')">Select all</button>
+<button onclick="document.getElementById('input_textarea').value = ''">Clear</button>
+</th>
+<th>
+<button onclick="copytext()">Copy text</button>
+
+</th>
+<th style="width: 200px">Conversion table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<textarea
+id="input_textarea"
+autofocus=""
+placeholder="Input text here"
+rows="10"
+oninput="onInputTextChange(this.value)"></textarea>    
+</td>
+<td>
+<textarea rows="10" placeholder="output" id="output_textarea"></textarea>    
+</td>
+<td>
+
+<center>
+<div style="overflow-y: scroll; height:250px; width:170px">
+<table>
+<table>
+<thead>
+<tr>
+<th>in.</th>
+<th>out.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>k</td>
+<td>క</td>
+</tr>
+<tr>
+<td>c</td>
+<td>చ</td>
+</tr>
+<tr>
+<td>T</td>
+<td>ట</td>
+</tr>
+<tr>
+<td>t</td>
+<td>త</td>
+</tr>
+<tr>
+<td>p</td>
+<td>ప</td>
+</tr>
+<tr>
+<td>kh</td>
+<td>ఖ</td>
+</tr>
+<tr>
+<td>ch</td>
+<td>ఛ</td>
+</tr>
+<tr>
+<td>Th</td>
+<td>ఠ</td>
+</tr>
+<tr>
+<td>th</td>
+<td>థ</td>
+</tr>
+<tr>
+<td>ph</td>
+<td>ఫ</td>
+</tr>
+<tr>
+<td>g</td>
+<td>గ</td>
+</tr>
+<tr>
+<td>j</td>
+<td>జ</td>
+</tr>
+<tr>
+<td>D</td>
+<td>డ</td>
+</tr>
+<tr>
+<td>d</td>
+<td>ద</td>
+</tr>
+<tr>
+<td>b</td>
+<td>బ</td>
+</tr>
+<tr>
+<td>gh</td>
+<td>ఘ</td>
+</tr>
+<tr>
+<td>jh</td>
+<td>ఝ</td>
+</tr>
+<tr>
+<td>Dh</td>
+<td>ఢ</td>
+</tr>
+<tr>
+<td>dh</td>
+<td>ధ</td>
+</tr>
+<tr>
+<td>bh</td>
+<td>భ</td>
+</tr>
+<tr>
+<td>ng</td>
+<td>ఙ</td>
+</tr>
+<tr>
+<td>ny</td>
+<td>ఞ</td>
+</tr>
+<tr>
+<td>N</td>
+<td>ణ</td>
+</tr>
+<tr>
+<td>n</td>
+<td>న</td>
+</tr>
+<tr>
+<td>m</td>
+<td>మ</td>
+</tr>
+<tr>
+<td>h</td>
+<td>హ</td>
+</tr>
+<tr>
+<td>y</td>
+<td>ప</td>
+</tr>
+<tr>
+<td>r</td>
+<td>ర</td>
+</tr>
+<tr>
+<td>l</td>
+<td>ల</td>
+</tr>
+<tr>
+<td>v</td>
+<td>వ</td>
+</tr>
+<tr>
+<td>sh</td>
+<td>శ</td>
+</tr>
+<tr>
+<td>S</td>
+<td>ష</td>
+</tr>
+<tr>
+<td>s</td>
+<td>స</td>
+</tr>
+<tr>
+<td>M</td>
+<td>ం</td>
+</tr>
+<tr>
+<td>H</td>
+<td>ః</td>
+</tr>
+<tr>
+<td>C</td>
+<td>ఁ</td>
+</tr>
+<tr>
+<td>q</td>
+<td>్</td>
+</tr>
+<tr>
+<td>a</td>
+<td>&#8203;</td>
+</tr>
+<tr>
+<td>aa</td>
+<td>ా</td>
+</tr>
+<tr>
+<td>i</td>
+<td>ి</td>
+</tr>
+<tr>
+<td>ii</td>
+<td>ీ</td>
+</tr>
+<tr>
+<td>u</td>
+<td>ు</td>
+</tr>
+<tr>
+<td>uu</td>
+<td>ూ</td>
+</tr>
+<tr>
+<td>R</td>
+<td>ృ</td>
+</tr>
+<tr>
+<td>RR</td>
+<td>ౄ</td>
+</tr>
+<tr>
+<td>L</td>
+<td>ౢ</td>
+</tr>
+<tr>
+<td>LL</td>
+<td>ౣ</td>
+</tr>
+<tr>
+<td>e</td>
+<td>ె</td>
+</tr>
+<tr>
+<td>ee</td>
+<td>ే</td>
+</tr>
+<tr>
+<td>ai</td>
+<td>ై</td>
+</tr>
+<tr>
+<td>o</td>
+<td>ొ</td>
+</tr>
+<tr>
+<td>oo</td>
+<td>ో</td>
+</tr>
+<tr>
+<td>au</td>
+<td>ౌ</td>
+</tr>
+<tr>
+<td>qa</td>
+<td>అ</td>
+</tr>
+<tr>
+<td>qaa</td>
+<td>ఆ</td>
+</tr>
+<tr>
+<td>qi</td>
+<td>ఇ</td>
+</tr>
+<tr>
+<td>qii</td>
+<td>ఈ</td>
+</tr>
+<tr>
+<td>qu</td>
+<td>ఉ</td>
+</tr>
+<tr>
+<td>quu</td>
+<td>ఊ</td>
+</tr>
+<tr>
+<td>qR</td>
+<td>ఋ</td>
+</tr>
+<tr>
+<td>qRR</td>
+<td>ౠ</td>
+</tr>
+<tr>
+<td>qL</td>
+<td>ఌ</td>
+</tr>
+<tr>
+<td>qLL</td>
+<td>ౡ</td>
+</tr>
+<tr>
+<td>qe</td>
+<td>ఎ</td>
+</tr>
+<tr>
+<td>qee</td>
+<td>ఏ</td>
+</tr>
+<tr>
+<td>qai</td>
+<td>ఐ</td>
+</tr>
+<tr>
+<td>qo</td>
+<td>ఒ</td>
+</tr>
+<tr>
+<td>qoo</td>
+<td>ఓ</td>
+</tr>
+<tr>
+<td>qau</td>
+<td>ఔ</td>
+</tr>
+<tr>
+<td>0</td>
+<td>౦</td>
+</tr>
+<tr>
+<td>1</td>
+<td>౧</td>
+</tr>
+<tr>
+<td>2</td>
+<td>౨</td>
+</tr>
+<tr>
+<td>3</td>
+<td>౩</td>
+</tr>
+<tr>
+<td>4</td>
+<td>౪</td>
+</tr>
+<tr>
+<td>5</td>
+<td>౫</td>
+</tr>
+<tr>
+<td>6</td>
+<td>౬</td>
+</tr>
+<tr>
+<td>7</td>
+<td>౭</td>
+</tr>
+<tr>
+<td>8</td>
+<td>౮</td>
+</tr>
+<tr>
+<td>9</td>
+<td>౯</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</div>
+</center>
+
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+
+</body>
+</html>
